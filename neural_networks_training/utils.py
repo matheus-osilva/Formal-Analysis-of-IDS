@@ -154,18 +154,18 @@ def train_network_1(train_loader, val_loader, network, optimizer, criterion, nn_
     
     best_val_loss = float('inf')
     best_model_wts = copy.deepcopy(network.state_dict())
-    patience_counter = 0 # Contador para o Early Stopping
+    patience_counter = 0 # Counter for early stop
     
     for epoch in range(EPOCHS):
         
-        # --- FASE DE TREINO ---
+        # --- TRAINING PHASE ---
         network.train()
         running_loss = 0.0
         running_corrects = 0
         total_samples = 0
         
         for inputs, labels in train_loader:
-            # 1. Zerar gradientes
+            # 1. Set gradients to zero
             optimizer.zero_grad()
             
             # 2. Forward Pass
@@ -176,7 +176,7 @@ def train_network_1(train_loader, val_loader, network, optimizer, criterion, nn_
             loss.backward()
             optimizer.step()
             
-            # Estatísticas do batch
+            # Batch statistics
             running_loss += loss.item() * inputs.size(0)
             predictions = torch.argmax(outputs, dim=1)
             running_corrects += (predictions == labels).sum().item()
@@ -185,7 +185,7 @@ def train_network_1(train_loader, val_loader, network, optimizer, criterion, nn_
         epoch_train_loss = running_loss / total_samples
         epoch_train_acc = running_corrects / total_samples
 
-        # --- FASE DE VALIDAÇÃO ---
+        # --- VALIDATION PHASE ---
         network.eval()
         val_running_loss = 0.0
         val_running_corrects = 0
@@ -204,27 +204,27 @@ def train_network_1(train_loader, val_loader, network, optimizer, criterion, nn_
         epoch_val_loss = val_running_loss / val_samples
         epoch_val_acc = val_running_corrects / val_samples
 
-        # --- LOGGING E EARLY STOPPING ---
+        # --- LOGGING AND EARLY STOPPING ---
         print(f"Epoch {epoch+1}/{EPOCHS} | "
               f"Train Loss: {epoch_train_loss:.4f} Acc: {epoch_train_acc:.4f} | "
               f"Val Loss: {epoch_val_loss:.4f} Acc: {epoch_val_acc:.4f}")
         
-        # Verificar se melhorou
+        # Checks if its improved
         if epoch_val_loss < best_val_loss:
             best_val_loss = epoch_val_loss
             best_model_wts = copy.deepcopy(network.state_dict())
-            torch.save(network.state_dict(), nn_file_name) # Salva no disco
-            patience_counter = 0 # Reinicia a paciência
-            print(f"--> Modelo salvo! (Melhor Val Loss: {best_val_loss:.4f})")
+            torch.save(network.state_dict(), nn_file_name) # Saves on drive
+            patience_counter = 0 # Resets patience
+            print(f"--> Model saved! (Best Val Loss: {best_val_loss:.4f})")
         else:
             patience_counter += 1
-            print(f"--> Sem melhoria. Paciência: {patience_counter}/{patience}")
+            print(f"--> No improvement. Patience: {patience_counter}/{patience}")
             
         if patience_counter >= patience:
-            print("Early Stopping ativado! Parando o treino.")
+            print("Early Stopping! Stopping training.")
             break
 
     print("--- Training Finished ---")
-    # Carregar o melhor modelo encontrado antes de retornar
+    # Loads best model
     network.load_state_dict(best_model_wts)
     return network
