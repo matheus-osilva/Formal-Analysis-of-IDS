@@ -1,0 +1,3 @@
+for arquivo in ./properties/nn_0/*; do     echo "--------------------------------" >> result_nn_0.log;     echo "Processing: $arquivo" >> result_nn_0.log;          { time ./bin/Release/lukasol -mip "$arquivo"; } >> result_nn_0.log 2>&1; done
+
+for arquivo in ./properties/nn_1/*; do     echo "--------------------------------" >> result_nn_1.log;     echo "Processing: $arquivo" >> result_nn_1.log;          { time ./bin/Release/lukasol -mip "$arquivo"; } >> result_nn_1.log 2>&1; done
