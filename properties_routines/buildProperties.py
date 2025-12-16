@@ -405,6 +405,7 @@ def prop3_contrapositive(total_neurons, masterfile_name, nn_x):
 
         print(f"Created: {new_file_name}")
 
+
 def prop4(total_neurons, masterfile_name, nn_x, a, b):
     root_folder = Path('./properties_routines')
     master_path = root_folder / masterfile_name
@@ -484,8 +485,8 @@ def prop4(total_neurons, masterfile_name, nn_x, a, b):
             
             current_unit = 1
             unit_indices = []
-            f_out.write("f:\n")
-            # Step 3.1: Clause Z repeated and Final Implication
+            f_out.write("C:\n")
+            # Step 3.1: Clause Z repeated
             str_z_repeated_a = " ".join([str(var_z)] * a)
             idx_clause_z = current_unit
             f_out.write(f"Unit {current_unit} :: Clause      :: {str_z_repeated_a}\n")

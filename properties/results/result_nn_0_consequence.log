@@ -1,0 +1,480 @@
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron0.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... VALID
+
+real	10m29,648s
+user	10m14,821s
+sys	0m4,266s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... VALID
+
+real	5m19,727s
+user	5m12,113s
+sys	0m1,968s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron11.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... VALID
+
+real	8m48,262s
+user	8m39,330s
+sys	0m1,898s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron12.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... VALID
+
+real	14m33,922s
+user	14m19,667s
+sys	0m2,665s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron13.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... VALID
+
+real	4m37,998s
+user	4m33,925s
+sys	0m1,275s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron14.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... VALID
+
+real	5m52,350s
+user	5m47,702s
+sys	0m1,254s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron1.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... VALID
+
+real	6m56,363s
+user	6m52,375s
+sys	0m0,872s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron2.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... VALID
+
+real	6m11,098s
+user	6m4,787s
+sys	0m1,502s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron3.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... VALID
+
+real	5m39,511s
+user	5m35,325s
+sys	0m1,003s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron4.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... VALID
+
+real	3m57,160s
+user	3m53,643s
+sys	0m1,065s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron5.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... VALID
+
+real	5m33,318s
+user	5m26,939s
+sys	0m1,887s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron6.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... VALID
+
+real	5m5,069s
+user	4m58,903s
+sys	0m2,302s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron7.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... VALID
+
+real	11m31,908s
+user	11m22,665s
+sys	0m1,543s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron8.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	3m33,425s
+user	3m31,815s
+sys	0m0,462s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop3_neuron9.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... VALID
+
+real	5m27,302s
+user	5m22,848s
+sys	0m1,338s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron0_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m16,184s
+user	0m15,640s
+sys	0m0,399s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron0_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m15,181s
+user	0m14,733s
+sys	0m0,315s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron0_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m16,509s
+user	0m16,239s
+sys	0m0,313s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron10_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m11,314s
+user	0m11,256s
+sys	0m0,288s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron10_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m11,292s
+user	0m11,202s
+sys	0m0,294s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron10_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m11,290s
+user	0m11,027s
+sys	0m0,384s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron1_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m14,043s
+user	0m13,956s
+sys	0m0,304s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron11_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m10,952s
+user	0m10,891s
+sys	0m0,290s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron11_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m11,064s
+user	0m10,989s
+sys	0m0,297s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron1_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m12,180s
+user	0m12,094s
+sys	0m0,310s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron11_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m12,056s
+user	0m11,960s
+sys	0m0,309s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron1_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m16,858s
+user	0m16,725s
+sys	0m0,298s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron12_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m12,763s
+user	0m12,419s
+sys	0m0,309s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron12_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m12,606s
+user	0m12,316s
+sys	0m0,324s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron12_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m13,328s
+user	0m12,786s
+sys	0m0,325s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron13_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m12,510s
+user	0m12,367s
+sys	0m0,301s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron13_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m16,299s
+user	0m16,068s
+sys	0m0,315s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron13_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m12,101s
+user	0m11,813s
+sys	0m0,398s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron14_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m14,359s
+user	0m13,973s
+sys	0m0,465s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron14_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m16,802s
+user	0m16,385s
+sys	0m0,345s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron14_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m15,034s
+user	0m14,849s
+sys	0m0,316s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron2_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m13,737s
+user	0m13,480s
+sys	0m0,320s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron2_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m19,233s
+user	0m18,876s
+sys	0m0,357s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron2_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m15,731s
+user	0m15,465s
+sys	0m0,357s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron3_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m50,098s
+user	0m48,721s
+sys	0m0,661s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron3_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m22,949s
+user	0m22,023s
+sys	0m0,377s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron3_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m23,433s
+user	0m22,923s
+sys	0m0,371s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron4_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m18,359s
+user	0m17,869s
+sys	0m0,373s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron4_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m15,179s
+user	0m14,798s
+sys	0m0,339s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron4_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m15,917s
+user	0m15,363s
+sys	0m0,441s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron5_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m19,962s
+user	0m19,393s
+sys	0m0,357s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron5_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m13,772s
+user	0m13,431s
+sys	0m0,340s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron5_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m19,300s
+user	0m18,830s
+sys	0m0,338s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron6_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m13,831s
+user	0m13,420s
+sys	0m0,427s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron6_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m13,648s
+user	0m13,338s
+sys	0m0,361s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron6_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m13,044s
+user	0m12,937s
+sys	0m0,301s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron7_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m17,085s
+user	0m16,592s
+sys	0m0,401s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron7_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m16,967s
+user	0m16,328s
+sys	0m0,383s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron7_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m15,935s
+user	0m15,339s
+sys	0m0,347s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron8_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m12,897s
+user	0m12,605s
+sys	0m0,309s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron8_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m13,643s
+user	0m13,301s
+sys	0m0,403s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron8_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m15,335s
+user	0m14,920s
+sys	0m0,379s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron9_1_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m17,573s
+user	0m17,210s
+sys	0m0,384s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron9_1_20.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m17,393s
+user	0m17,041s
+sys	0m0,343s
+--------------------------------
+Processing: ./properties/nn_0_consequence/prop4_neuron9_2_10.limodsat
+-: LUKAsiewicz infinitely-valued logic SOLver :-
+Analysing consequence validity... INvalid
+
+real	0m16,112s
+user	0m15,756s
+sys	0m0,363s
