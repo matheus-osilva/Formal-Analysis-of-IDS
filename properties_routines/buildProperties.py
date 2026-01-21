@@ -662,18 +662,10 @@ def get_max_var_from_text(content):
     return max(all_numbers) if all_numbers else 0
 
 
-# build_masterfile()
-# prop1(7, 10) # builds properties 1
-# prop2(15, "nn_0_master.limodsat", "nn_0") # builds properties 2 for nn_0
-# prop2(15, "nn_1_master.limodsat", "nn_1") # builds properties 2 for nn_1
-# prop3_contrapositive(15, "nn_0_master.limodsat", "nn_0") # builds properties 3 for nn_0
-# prop3_contrapositive(15, "nn_1_master.limodsat", "nn_1") # builds properties 3 for nn_1
-# prop4_contrapositive(15, "nn_0_master.limodsat", "nn_0", 2, 10) # builds properties 4 for nn_0 for constant 0.2
-# prop4_contrapositive(15, "nn_0_master.limodsat", "nn_0", 1, 10) # builds properties 4 for nn_0 for constant 0.1
-# prop4_contrapositive(15, "nn_0_master.limodsat", "nn_0", 1, 20) # builds properties 4 for nn_0 for constant 0.05
-# prop4_contrapositive(15, "nn_1_master.limodsat", "nn_1", 2, 10) # builds properties 4 for nn_1 for constant 0.2
-# prop4_contrapositive(15, "nn_1_master.limodsat", "nn_1", 1, 10) # builds properties 4 for nn_1 for constant 0.1
-# prop4_contrapositive(15, "nn_1_master.limodsat", "nn_1", 1, 20) # builds properties 4 for nn_1 for constant 0.05
+build_masterfile()
+prop1(7, 10) # builds properties 1
+prop2(15, "nn_0_master.limodsat", "nn_0") # builds properties 2 for nn_0
+prop2(15, "nn_1_master.limodsat", "nn_1") # builds properties 2 for nn_1
 prop3(15, "nn_0_master.limodsat", "nn_0") # builds properties 3 for nn_0
 prop3(15, "nn_1_master.limodsat", "nn_1") # builds properties 3 for nn_1
 prop4(15, "nn_0_master.limodsat", "nn_0", 2, 10) # builds properties 4 for nn_0 for constant 0.2
