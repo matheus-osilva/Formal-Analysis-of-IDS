@@ -54,7 +54,7 @@ This script will generate the logical formulas (security properties) that will b
 Use the **lukasol** solver to verify the properties. From the root directory, run the following command for each property file:
 
 ```bash
-./bin/Release/lukasol -m 'propertyname'.limodsat
+./bin/Release/lukasol -mip 'propertyname'.limodsat
 ```
 
 ---
@@ -63,4 +63,4 @@ Use the **lukasol** solver to verify the properties. From the root directory, ru
 * `main.py`: Training and exporting models.
 * `buildProperties.py`: Logic formula generation.
 * `/limodsat`: Directory for logical representation files.
-* `/docs`: Documentation and thesis reports.
+* `/docs`: Documentation and reports.
