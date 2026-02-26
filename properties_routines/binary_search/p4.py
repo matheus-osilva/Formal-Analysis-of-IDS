@@ -1,79 +1,16 @@
 from fractions import Fraction
-import re
-import subprocess
-import sys
-import shutil
-
 from pathlib import Path
+from utils import run_lukasol, calculates_max_var
+import re
 
 
-# Auxiliary functions
 
-def get_max_var_from_text(content):
-    all_numbers = [int(num) for num in re.findall(r'\d+', content)]
-    return max(all_numbers) if all_numbers else 0
-
-def find_lukasol_binary():
-    filename = 'lukasol'
-    if sys.platform.startswith('win'):
-        filename += '.exe'
-    
-    path_in_env = shutil.which(filename)
-    if path_in_env:
-        return Path(path_in_env)
-
-    search_root = Path.cwd()
-    for _ in range(4): 
-        found = list(search_root.rglob(f"**/{filename}"))
-        if found:
-            release_bins = [p for p in found if 'Release' in str(p)]
-            return release_bins[0] if release_bins else found[0]
-        if search_root.parent == search_root:
-            break
-        search_root = search_root.parent
-
-def run_lukasol(file_path):
-    """
-    Returns:
-        True: SAT
-        False: unSAT
-        None: Error/Unknown (CRITICAL CHANGE)
-    """
-    try:
-        solver_path = find_lukasol_binary()
-    except FileNotFoundError as e:
-        print(e)
-        return
-    
-    try:
-        result = subprocess.run(
-            [str(solver_path), '-mip', str(file_path)],
-            capture_output=True,
-            text=True,
-            check=True
-        )
-        output = result.stdout
-        
-        if "Analysing consequence validity... VALID" in output:
-            return True
-        elif "Analysing consequence validity... INvalid" in output:
-            return False
-        else:
-            # Found output that is neither SAT nor UNSAT
-            print(f"  [WARNING] Solver output unclear for {file_path}")
-            # print(output[:200]) # Uncomment to debug
-            return None 
-
-    except subprocess.CalledProcessError as e:
-        print(f"  [ERROR] Solver crashed: {e}")
-        return None
-
-def solve(output_filename, folder_name, masterfile_name, neuron_number):
+def solve(output_filename, folder_name, masterfile_name, neuron_number, nn):
     low = 0.0
-    high = 1.0
-    tolerance = 0.01    
+    high = 0.25
+    tolerance = 0.001    
     
-    best_sat_val = 0.5
+    best_sat_val = 0.0
     
     curr_low = low
     curr_high = high
@@ -85,15 +22,16 @@ def solve(output_filename, folder_name, masterfile_name, neuron_number):
         mid = (curr_low + curr_high) / 2
         
         # REDUCED PRECISION: Limit denominator to 64 to avoid massive clauses
-        frac = Fraction(mid).limit_denominator(64)
+        #frac = Fraction(mid).limit_denominator(64)
+        frac = Fraction(mid)
         a, b = frac.numerator, frac.denominator
         if a == 1 and b == 2:
             a = 2
             b = 4
         
-        build_p3_file(a, b,output_filename, folder_name, masterfile_name, neuron_number)
+        build_p4_file(a, b,output_filename, folder_name, masterfile_name, neuron_number, nn)
 
-        is_sat = run_lukasol(f"./properties/binary_search/{folder_name}/prop3_nn_1_{output_filename}_{a}_{b}.limodsat")
+        is_sat = run_lukasol(f"./properties/binary_search/{folder_name}/prop4_{nn}_{output_filename}_{a}_{b}.limodsat")
         
         if is_sat is None:
             print(f"    ! Aborting search at {mid} ({a}/{b}) due to solver error.")
@@ -103,29 +41,16 @@ def solve(output_filename, folder_name, masterfile_name, neuron_number):
         print(f"Result for {output_filename} for a={a} and b={b}: {is_sat}")
         if not is_sat:
             best_sat_val = mid
-            curr_low = mid
-        else:
             curr_high = mid
+        else:
+            curr_low = mid
                 
     if not valid_search:
         return -1.0 # Indicator of failure
         
     return best_sat_val
 
-def calculates_max_var(masterfile_name):
-    # Ajuste de caminho para robustez
-    file_path = Path('./properties_routines') / masterfile_name
-    try:
-        content = file_path.read_text(encoding='utf-8')
-        all_numbers = [int(num) for num in re.findall(r'\d+', content)]
-        return max(all_numbers) if all_numbers else 0
-    except FileNotFoundError:
-        print(f"Error: File '{masterfile_name}' was not found.")
-        return 0
-    
-# Main functions
-
-def build_p3_file(a, b, output_filename, folder_name, masterfile_name, neuron_number):
+def build_p4_file(a, b, output_filename, folder_name, masterfile_name, neuron_number, nn):
 
     if b < 1:
         raise ValueError("Parameter 'b' must be greater than or equal to 1.")
@@ -142,7 +67,7 @@ def build_p3_file(a, b, output_filename, folder_name, masterfile_name, neuron_nu
     if not blocks[0].strip():
         blocks.pop(0)
     
-    new_file_name = f"prop3_nn_1_{output_filename}_{a}_{b}.limodsat"
+    new_file_name = f"prop4_{nn}_{output_filename}_{a}_{b}.limodsat"
     new_path = Path(f'./properties/binary_search/{folder_name}/') / new_file_name
     
     # Ensure directory exists (optional, but good practice)
@@ -208,23 +133,32 @@ def build_p3_file(a, b, output_filename, folder_name, masterfile_name, neuron_nu
         unit_indices = []
 
         f_out.write("C:\n")
-        # Step 3.4: Clause Z repeated
+        # Step 3.2: Clause Z repeated
         str_z_repeated_a = " ".join([str(var_z)] * a)
         idx_clause_z = current_unit
         
         f_out.write(f"Unit {current_unit} :: Clause      :: {str_z_repeated_a}\n")
         current_unit += 1
-
-        # Step 3.1: Define Clauses for ALL neurons
+        f_out.write(f"Unit {current_unit} :: Clause      :: {str_z_repeated_a}\n")
+        current_unit += 1
+        f_out.write(f"Unit {current_unit} :: Clause      :: {raw_max + i + 1}\n")
+        idx_target = current_unit
+        current_unit += 1
+        # Step 3.2: Define Clauses for ALL neurons
         for k in range(15):
-            if k == neuron_number:
+            if k == i:
                 continue
             val = raw_max + k + 1
             f_out.write(f"Unit {current_unit} :: Clause      :: {val}\n")
             current_unit += 1
-            f_out.write(f"Unit {current_unit} :: Implication :: {current_unit-1} {idx_clause_z}\n")
+            f_out.write(f"Unit {current_unit} :: Implication :: {idx_target} {current_unit - 1}\n")
+            current_unit += 1
+            f_out.write(f"Unit {current_unit} :: Negation    :: {current_unit - 1}\n")
+            current_unit += 1
+            f_out.write(f"Unit {current_unit} :: Implication :: {idx_clause_z} {current_unit - 1}\n")
             unit_indices.append(current_unit) # Store index for later reference
             current_unit += 1
+        
 
         # Step 3.3: Minimum List
         # The list contains all units EXCEPT the target one
@@ -232,15 +166,14 @@ def build_p3_file(a, b, output_filename, folder_name, masterfile_name, neuron_nu
         str_others = " ".join(others_indices)
         
         f_out.write(f"Unit {current_unit} :: Minimum     :: {str_others}\n")
-        current_unit += 1
 
     print(f"Created: {new_file_name}")
 
-def binary_search(masterfile_name, neuron):
+def binary_search(masterfile_name, neuron, nn):
     output_filename = neuron
     folder_name = 'temporary'
 
-    result = solve(output_filename, folder_name, masterfile_name, neuron)
+    result = solve(output_filename, folder_name, masterfile_name, neuron, nn)
 
     print(f"The result for {output_filename} is {result}.")
     return result
@@ -251,6 +184,6 @@ def binary_search(masterfile_name, neuron):
 if __name__ == "__main__":
     output =[]
     for i in range(0, 15):
-        output.append(binary_search('nn_1_master.limodsat', i))
+        output.append(binary_search('nn_1_master.limodsat', i, 'nn_1'))
     
     print(output)

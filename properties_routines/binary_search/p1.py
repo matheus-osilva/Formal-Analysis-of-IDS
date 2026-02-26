@@ -1,72 +1,8 @@
 from fractions import Fraction
-import re
-import subprocess
-import sys
-import shutil
-
 from pathlib import Path
+from utils import get_max_var_from_text, run_lukasol
 
 
-# Auxiliary functions
-
-def get_max_var_from_text(content):
-    all_numbers = [int(num) for num in re.findall(r'\d+', content)]
-    return max(all_numbers) if all_numbers else 0
-
-def find_lukasol_binary():
-    filename = 'lukasol'
-    if sys.platform.startswith('win'):
-        filename += '.exe'
-    
-    path_in_env = shutil.which(filename)
-    if path_in_env:
-        return Path(path_in_env)
-
-    search_root = Path.cwd()
-    for _ in range(4): 
-        found = list(search_root.rglob(f"**/{filename}"))
-        if found:
-            release_bins = [p for p in found if 'Release' in str(p)]
-            return release_bins[0] if release_bins else found[0]
-        if search_root.parent == search_root:
-            break
-        search_root = search_root.parent
-
-def run_lukasol(file_path):
-    """
-    Returns:
-        True: SAT
-        False: unSAT
-        None: Error/Unknown (CRITICAL CHANGE)
-    """
-    try:
-        solver_path = find_lukasol_binary()
-    except FileNotFoundError as e:
-        print(e)
-        return
-    
-    try:
-        result = subprocess.run(
-            [str(solver_path), '-mip', str(file_path)],
-            capture_output=True,
-            text=True,
-            check=True
-        )
-        output = result.stdout
-        
-        if "Analysing satisfiability... SAT" in output:
-            return True
-        elif "Analysing satisfiability... unSAT" in output:
-            return False
-        else:
-            # Found output that is neither SAT nor UNSAT
-            print(f"  [WARNING] Solver output unclear for {file_path.name}")
-            # print(output[:200]) # Uncomment to debug
-            return None 
-
-    except subprocess.CalledProcessError as e:
-        print(f"  [ERROR] Solver crashed: {e}")
-        return None
 
 def solve_for_boundary(search_type, origin_file, output_filename, folder_name):
     low = 0.0
@@ -119,8 +55,6 @@ def solve_for_boundary(search_type, origin_file, output_filename, folder_name):
         return -1.0 # Indicator of failure
         
     return best_sat_val
-
-# Main functions
 
 def build_p1_file_max(a, b, origin_file, output_filename, folder_name):
 
@@ -361,7 +295,6 @@ def build_p1_file_0(origin_file, output_filename, folder_name):
     except Exception as e:
         print(f"Error processing {origin_file}: {e}")
 
-
 def binary_search(nn, neuron):
     GLB = None
     LUB = None
@@ -386,7 +319,6 @@ def binary_search(nn, neuron):
     print(f"The result for {output_filename} is [{GLB}, {LUB}].")
     return (GLB, LUB)
     
-
 
 
 
