@@ -6,12 +6,11 @@ import re
 
 
 def solve(output_filename, folder_name, masterfile_name, neuron_number, nn):
-    low = 0.0
+    low = 0.125
     high = 1.0
-    tolerance = 0.01    
-    
+    tolerance = 0.001
     best_sat_val = 0.0
-    
+
     curr_low = low
     curr_high = high
     valid_search = True 
@@ -21,8 +20,7 @@ def solve(output_filename, folder_name, masterfile_name, neuron_number, nn):
             
         mid = (curr_low + curr_high) / 2
         
-        # REDUCED PRECISION: Limit denominator to 64 to avoid massive clauses
-        frac = Fraction(mid).limit_denominator(64)
+        frac = Fraction(mid)    
         a, b = frac.numerator, frac.denominator
         if a == 1 and b == 2:
             a = 2
@@ -31,7 +29,7 @@ def solve(output_filename, folder_name, masterfile_name, neuron_number, nn):
         build_p3_file(a, b,output_filename, folder_name, masterfile_name, neuron_number, nn)
 
         is_sat = run_lukasol(f"./properties/binary_search/{folder_name}/prop3_{nn}_{output_filename}_{a}_{b}.limodsat")
-        
+            
         if is_sat is None:
             print(f"    ! Aborting search at {mid} ({a}/{b}) due to solver error.")
             valid_search = False
@@ -124,7 +122,7 @@ def build_p3_file(a, b, output_filename, folder_name, masterfile_name, neuron_nu
 
             f_out.write(f"Unit 2 :: Clause      :: {raw_max + neuron_number + 1}\n")
 
-            f_out.write(f"Unit 3 :: Implication :: 2 1\n")
+            f_out.write(f"Unit 3 :: Implication :: 1 2\n")
             f_out.write(f"\n")
         
         
@@ -174,7 +172,18 @@ def binary_search(masterfile_name, neuron, nn):
 
 if __name__ == "__main__":
     output =[]
-    for i in range(0, 15):
-        output.append(binary_search('nn_0_master.limodsat', i, 'nn_0'))
+    for i in range(14, 15):
+        output.append(binary_search('nn_1_master.limodsat', i, 'nn_1'))
     
     print(output)
+
+    # for i in range(0, 15):
+    #     build_p3_file(2, 2, i, "temporary", 'nn_1_master.limodsat', i, 'nn_1')
+    #     output.append(run_lukasol(f"./properties/binary_search/temporary/prop3_nn_1_{i}_2_2.limodsat"))
+    # print(output)
+    # i = 6
+    # a = 8
+    # b = 10
+    # build_p3_file(a, b, i, "temporary", 'nn_1_master.limodsat', i, 'nn_1')
+    # output.append(run_lukasol(f"./properties/binary_search/temporary/prop3_nn_1_{i}_{a}_{b}.limodsat"))
+    # print(output)
