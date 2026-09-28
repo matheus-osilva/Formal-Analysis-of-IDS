@@ -139,12 +139,12 @@ def build_p4_file(a, b, output_filename, folder_name, masterfile_name, neuron_nu
         
         f_out.write(f"Unit {current_unit} :: Clause      :: {str_z_repeated_a}\n")
         current_unit += 1
-        f_out.write(f"Unit {current_unit} :: Clause      :: {raw_max + i + 1}\n")
+        f_out.write(f"Unit {current_unit} :: Clause      :: {raw_max + neuron_number + 1}\n")
         idx_target = current_unit
         current_unit += 1
         # Step 3.2: Define Clauses for ALL neurons
         for k in range(15):
-            if k == i:
+            if k == neuron_number:
                 continue
             val = raw_max + k + 1
             f_out.write(f"Unit {current_unit} :: Clause      :: {val}\n")
@@ -259,12 +259,12 @@ def build_p4_file_0(output_filename, folder_name, masterfile_name, neuron_number
         f_out.write(f"Unit {current_unit} :: Conjunction :: {current_unit - 1} {current_unit - 2}\n")
         idx_clause_z = current_unit
         current_unit += 1
-        f_out.write(f"Unit {current_unit} :: Clause      :: {raw_max + i + 1}\n")
+        f_out.write(f"Unit {current_unit} :: Clause      :: {raw_max + neuron_number + 1}\n")
         idx_target = current_unit
         current_unit += 1
         # Step 3.2: Define Clauses for ALL neurons
         for k in range(15):
-            if k == i:
+            if k == neuron_number: #changed from i to neuron_number
                 continue
             val = raw_max + k + 1
             f_out.write(f"Unit {current_unit} :: Clause      :: {val}\n")
@@ -301,17 +301,9 @@ def binary_search(masterfile_name, neuron, nn):
 
 if __name__ == "__main__":
     output =[]
-    # for i in range(0, 15):
-    #     output.append(binary_search('nn_1_master.limodsat', i, 'nn_1'))
-    
-    # print(output)
-    
     for i in range(0, 15):
-        output_filename = i
-        folder_name = 'temporary'
-        masterfile_name = 'nn_1_master.limodsat'
-        neuron_number = i
-        nn = 'nn_1'
-        build_p4_file_0(output_filename, folder_name, masterfile_name, neuron_number, nn)
-        output.append(run_lukasol(f"./properties/binary_search/{folder_name}/prop4_{nn}_{i}_0_0.limodsat"))
+        result = binary_search('nn_1_master.limodsat', i, 'nn_1')
+        output.append(result)
+        print(result)
+        print('---------------------------------------')
     print(output)

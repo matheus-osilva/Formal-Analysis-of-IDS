@@ -1,13 +1,12 @@
 from fractions import Fraction
 from pathlib import Path
 from utils import run_lukasol, calculates_max_var
-import re
 
 
 
 def solve(output_filename, folder_name, masterfile_name, neuron_number, nn):
-    low = 0.125
-    high = 1.0
+    low = 0.0
+    high = 1.0  
     tolerance = 0.001
     best_sat_val = 0.0
 
@@ -172,18 +171,9 @@ def binary_search(masterfile_name, neuron, nn):
 
 if __name__ == "__main__":
     output =[]
-    for i in range(14, 15):
-        output.append(binary_search('nn_1_master.limodsat', i, 'nn_1'))
-    
+    for i in range(0, 15):
+        result = binary_search('nn_1_master.limodsat', i, 'nn_1')
+        output.append(result)
+        print(result)
+        print('---------------------------------------')
     print(output)
-
-    # for i in range(0, 15):
-    #     build_p3_file(2, 2, i, "temporary", 'nn_1_master.limodsat', i, 'nn_1')
-    #     output.append(run_lukasol(f"./properties/binary_search/temporary/prop3_nn_1_{i}_2_2.limodsat"))
-    # print(output)
-    # i = 6
-    # a = 8
-    # b = 10
-    # build_p3_file(a, b, i, "temporary", 'nn_1_master.limodsat', i, 'nn_1')
-    # output.append(run_lukasol(f"./properties/binary_search/temporary/prop3_nn_1_{i}_{a}_{b}.limodsat"))
-    # print(output)

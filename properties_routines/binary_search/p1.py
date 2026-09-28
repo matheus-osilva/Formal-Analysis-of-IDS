@@ -5,10 +5,9 @@ from utils import get_max_var_from_text, run_lukasol
 
 
 def solve_for_boundary(search_type, origin_file, output_filename, folder_name):
-    low = 0.35
-     #0.0
+    low = 0.0
     high = 1
-    tolerance = 0.01    
+    tolerance = 0.001    
     
     best_sat_val = 0.0 if search_type == 'max' else 1.0
     
@@ -22,7 +21,8 @@ def solve_for_boundary(search_type, origin_file, output_filename, folder_name):
         mid = (curr_low + curr_high) / 2
         
         # REDUCED PRECISION: Limit denominator to 64 to avoid massive clauses
-        frac = Fraction(mid).limit_denominator(64)
+        #frac = Fraction(mid).limit_denominator(64)
+        frac = Fraction(mid)
         a, b = frac.numerator, frac.denominator
         if a == 1 and b == 2:
             a = 2
@@ -301,17 +301,17 @@ def binary_search(nn, neuron):
     LUB = None
     origin_file = f'./limodsat/{nn}/{neuron}.limodsat'
     output_filename = neuron
-    folder_name = 'temporary'
+    folder_name = 'wbl_validation'
 
     # Test the infimum and the supremum of the interval, i.e., 0 and 1.
-    #build_p1_file_0(origin_file, output_filename, folder_name)
-    #p1_0_sat = run_lukasol(f"./properties/binary_search/{folder_name}/prop1{neuron}_0_0.limodsat")
-    #build_p1_file_max(2, 2, origin_file, output_filename, folder_name)
-    #p1_1_sat = run_lukasol(f"./properties/binary_search/{folder_name}/prop1{neuron}_2_2_max.limodsat")
+    build_p1_file_0(origin_file, output_filename, folder_name)
+    p1_0_sat = run_lukasol(f"./properties/binary_search/{folder_name}/prop1{neuron}_0_0.limodsat")
+    build_p1_file_max(2, 2, origin_file, output_filename, folder_name)
+    p1_1_sat = run_lukasol(f"./properties/binary_search/{folder_name}/prop1{neuron}_2_2_max.limodsat")
 
-    #if p1_0_sat: GLB = 0
-    #if p1_1_sat: LUB = 1
-    GLB = 0
+    if p1_0_sat: GLB = 0
+    if p1_1_sat: LUB = 1
+
     if GLB is None: 
         GLB = solve_for_boundary('min', origin_file, output_filename, folder_name)
     if LUB is None:
@@ -324,17 +324,10 @@ def binary_search(nn, neuron):
 
 
 if __name__ == "__main__":
-    # output =[]
-    # for i in range(14, 15):
-    #     output.append(binary_search('nn_1', f'nn_1_{i}'))
-    
-    # print(output)
-    # binary_search('nn_1', f'nn_1_14')
-    a = 2
-    b = 3
-    origin_file = f'./limodsat/nn_1/nn_1_14.limodsat'
-    output_filename = "nn_1_14"
-    folder_name = 'temporary'
-    build_p1_file_max(a, b, origin_file, output_filename, folder_name)
-    p1_1_sat = run_lukasol(f"./properties/binary_search/{folder_name}/prop1nn_1_14_{a}_{b}_max.limodsat")
-    print(p1_1_sat)
+    output =[]
+    for i in range(6, 15):
+        result = binary_search('nn_1', f'nn_1_{i}')
+        output.append(result)
+        print(result)
+        print('---------------------------------------')
+    print(output)
